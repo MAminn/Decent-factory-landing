@@ -1,0 +1,166 @@
+/* =========================================================================
+   DECENT — Content data module
+   Single source of truth for confirmed company content.
+   Only contains facts sourced from the company profile.
+   ========================================================================= */
+
+export interface Company {
+  name: string;
+  established: number;
+  tagline: string;
+  positioning: string;
+  website: string;
+}
+
+export interface JourneyMilestone {
+  year: number;
+  label: string;
+}
+
+export interface FacilityFloor {
+  floor: string;
+  use: string;
+}
+
+export interface Capacity {
+  current: string;
+  team: string;
+  scalable: string;
+}
+
+export interface ValueItem {
+  title: string;
+  body: string;
+}
+
+export interface FutureItem {
+  title: string;
+  body: string;
+}
+
+export interface Contact {
+  phone: string;
+  emails: string[];
+  locations: string[];
+  website: string;
+}
+
+export const company: Company = {
+  name: "Decent",
+  established: 2017,
+  tagline: "Crafted with commitment. Built to last.",
+  positioning: "second-best factory in the local market, closing the gap",
+  website: "decenteg.com",
+};
+
+export const founders: readonly string[] = ["Osama Maher", "Khalil Elsayed"];
+
+export const journey: readonly JourneyMilestone[] = [
+  { year: 2017, label: "Single production line, rented facility" },
+  { year: 2019, label: "Acquired own building" },
+  { year: 2020, label: "Built 2nd floor & moved packaging to ground floor" },
+  { year: 2022, label: "Built 3rd floor for packaging" },
+  { year: 2024, label: "Built 4th floor for warehousing & storage" },
+  { year: 2025, label: "Built annex building" },
+];
+
+export const products: readonly string[] = [
+  "Pants & Trousers",
+  "Jeans & Denim",
+  "Shorts",
+  "Chinos",
+  "Casual & Formal Bottoms",
+  "All other bottom-wear categories",
+];
+
+export const process: readonly string[] = [
+  "Cutting",
+  "Production",
+  "Washing",
+  "Finishing",
+  "Packaging",
+  "QC",
+];
+
+export const facility: readonly FacilityFloor[] = [
+  { floor: "Ground Floor", use: "2 gabardine/slit-pocket lines" },
+  { floor: "2nd Floor", use: "2 denim/five-pocket lines" },
+  { floor: "3rd Floor", use: "Packaging & finishing" },
+  { floor: "4th Floor", use: "Training Academy & warehousing" },
+  { floor: "Separate annex", use: "Cutting facility" },
+];
+
+export const capacity: Capacity = {
+  current: "100K pieces/month",
+  team: "600+ personnel",
+  scalable: "Up to 180K pieces/month within 2 years",
+};
+
+export const values: readonly ValueItem[] = [
+  {
+    title: "Commitment",
+    body: "We honor our word. When we agree to a deadline, a specification, or a standard, we deliver.",
+  },
+  {
+    title: "Quality",
+    body: "Quality isn't a department, it's a culture. From the fabric we source to the final stitch, every decision is made with the end product in mind.",
+  },
+  {
+    title: "Flexibility",
+    body: "We adapt to each client's order size, timeline, and requirements.",
+  },
+];
+
+export const whyDecent: readonly string[] = [
+  "A trusted partner to some of the biggest names in the local fashion market",
+  "Scalable capacity designed to grow alongside your business",
+  "Flexible operations that adapt to your order size, timeline, and requirements",
+  "Best-in-class quality control across every production stage",
+  "Proven commitment to deadlines and specifications",
+];
+
+export const clients: readonly string[] = [
+  "Walker",
+  "Coup",
+  "Dalydress",
+  "Carina",
+  "Steng Jeans Wear",
+  "Town Team",
+  "Cuba Jeans",
+  "Tomato",
+  "Men's Club",
+  "Khotwh",
+  "U-Turn",
+  "Hover Jeans",
+];
+
+export const partners: readonly string[] = [
+  "KB Family Denim",
+  "Sharabati Denim",
+  "ISKO",
+];
+
+export const future: readonly FutureItem[] = [
+  {
+    title: "Scaling Production",
+    body: "Growing monthly capacity from 100,000 to 180,000 pieces within two years.",
+  },
+  {
+    title: "Entering International Markets",
+    body: "Preparing to export to overseas markets, bringing Decent's manufacturing quality to a global audience.",
+  },
+  {
+    title: "New Product Lines",
+    body: "Expanding beyond core bottom-wear into cotton-based product lines while maintaining the same standard of excellence.",
+  },
+];
+
+export const contact: Contact = {
+  phone: "+20 102 244 9556",
+  emails: ["osama@decenteg.com", "amr.bassiuny@decenteg.com"],
+  locations: [
+    "Belbes, Sharqiyah, Egypt",
+    "New factory: Obour, Qalyubiyah, Egypt",
+  ],
+  website: "decenteg.com",
+};
