@@ -1,5 +1,8 @@
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
+import About from "./components/About";
+import Journey from "./components/Journey";
+import Products from "./components/Products";
 import Section from "./components/Section";
 import Footer from "./components/Footer";
 
@@ -8,30 +11,6 @@ import Footer from "./components/Footer";
  * These are intentionally placeholder shells; content is built in later steps.
  */
 const SECTIONS = [
-  {
-    id: "about",
-    index: "01",
-    eyebrow: "About",
-    title: "A factory built on commitment",
-    placeholder: "Company overview and positioning will live here.",
-    tone: "light" as const,
-  },
-  {
-    id: "journey",
-    index: "02",
-    eyebrow: "Our Journey",
-    title: "From one line to a campus",
-    placeholder: "The 2017–2025 growth timeline will live here.",
-    tone: "warm" as const,
-  },
-  {
-    id: "products",
-    index: "03",
-    eyebrow: "Products",
-    title: "Bottom-wear, perfected",
-    placeholder: "The product categories grid will live here.",
-    tone: "light" as const,
-  },
   {
     id: "manufacturing",
     index: "04",
@@ -101,6 +80,9 @@ export default function App() {
       <Nav />
       <main id='main'>
         <Hero />
+        <About />
+        <Journey />
+        <Products />
         {SECTIONS.map((section) => (
           <Section
             key={section.id}
