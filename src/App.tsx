@@ -3,6 +3,8 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Journey from "./components/Journey";
 import Products from "./components/Products";
+import Manufacturing from "./components/Manufacturing";
+import Capacity from "./components/Capacity";
 import Section from "./components/Section";
 import Footer from "./components/Footer";
 
@@ -11,24 +13,6 @@ import Footer from "./components/Footer";
  * These are intentionally placeholder shells; content is built in later steps.
  */
 const SECTIONS = [
-  {
-    id: "manufacturing",
-    index: "04",
-    eyebrow: "Manufacturing",
-    title: "Every stage, under one roof",
-    placeholder:
-      "The production process and facility breakdown will live here.",
-    tone: "warm" as const,
-  },
-  {
-    id: "capacity",
-    index: "05",
-    eyebrow: "Capacity",
-    title: "Scale that grows with you",
-    placeholder:
-      "Monthly capacity, team size, and scalability figures will live here.",
-    tone: "light" as const,
-  },
   {
     id: "values",
     index: "06",
@@ -83,6 +67,8 @@ export default function App() {
         <About />
         <Journey />
         <Products />
+        <Manufacturing />
+        <Capacity />
         {SECTIONS.map((section) => (
           <Section
             key={section.id}

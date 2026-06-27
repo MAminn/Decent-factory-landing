@@ -1,0 +1,200 @@
+.mfg__intro {
+  margin-top: 1.5rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 54ch;
+}
+
+.mfg__block {
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+
+.mfg__subhead {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold-accent);
+  padding-bottom: 1.5rem;
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* ---- a) Process flow ----------------------------------------------- */
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flow__step {
+  flex: 1 1 0;
+  min-width: 7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem 1.25rem;
+  position: relative;
+  background: var(--color-paper);
+  border: 1px solid var(--hairline);
+  margin-left: -1px;
+  margin-top: -1px;
+}
+
+.flow__num {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  color: var(--color-gold-accent);
+}
+
+.flow__name {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-ink);
+}
+
+/* connector arrow sits over the seam between steps */
+.flow__arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  z-index: 2;
+  width: 1.65rem;
+  height: 1.65rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-warm);
+  color: var(--color-denim-deep);
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+/* ---- Scroll-ready entrance (CSS-only, staggered) ------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .flow__step {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: mfg-reveal 0.6s var(--ease-out) forwards;
+    animation-delay: calc(var(--i, 0) * 100ms);
+  }
+
+  @keyframes mfg-reveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ---- b) Facility --------------------------------------------------- */
+.facility__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.facility__lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--color-ink);
+  max-width: 24ch;
+}
+
+/* image slot — alt-ready, no source yet */
+.facility__media {
+  margin-top: 2rem;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(160deg, #ece3d6 0%, #ded2c0 100%);
+  border: 1px solid var(--hairline);
+  position: relative;
+  overflow: hidden;
+}
+
+.facility__media::after {
+  content: "";
+  position: absolute;
+  right: -25%;
+  top: -30%;
+  width: 70%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(30, 58, 95, 0.12), transparent 70%);
+}
+
+.facility__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hairline);
+}
+
+.facility__row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.8fr) 1.2fr;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--hairline);
+  transition: padding-left var(--dur) var(--ease-out);
+}
+
+.facility__row:hover {
+  padding-left: 0.5rem;
+}
+
+.facility__floor {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.facility__use {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* ---- Responsive ---------------------------------------------------- */
+@media (max-width: 860px) {
+  .facility__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .flow {
+    flex-direction: column;
+  }
+  .flow__step {
+    min-width: 0;
+    flex-basis: auto;
+  }
+  /* rotate connectors to point downward when stacked */
+  .flow__arrow {
+    top: auto;
+    bottom: 0;
+    right: 50%;
+    transform: translate(50%, 50%) rotate(90deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .facility__row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+}
