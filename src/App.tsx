@@ -9,23 +9,8 @@ import Values from "./components/Values";
 import Why from "./components/Why";
 import Clients from "./components/Clients";
 import Future from "./components/Future";
-import Section from "./components/Section";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-
-/**
- * Section scaffolding — ordered exactly as specified.
- * These are intentionally placeholder shells; content is built in later steps.
- */
-const SECTIONS = [
-  {
-    id: "contact",
-    index: "10",
-    eyebrow: "Contact",
-    title: "Let's build something that lasts",
-    placeholder: "Contact details and the project enquiry form will live here.",
-    tone: "warm" as const,
-  },
-];
 
 export default function App() {
   return (
@@ -45,17 +30,7 @@ export default function App() {
         <Why />
         <Clients />
         <Future />
-        {SECTIONS.map((section) => (
-          <Section
-            key={section.id}
-            id={section.id}
-            index={section.index}
-            eyebrow={section.eyebrow}
-            title={section.title}
-            placeholder={section.placeholder}
-            tone={section.tone}
-          />
-        ))}
+        <Contact />
       </main>
       <Footer />
     </>

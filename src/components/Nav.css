@@ -88,10 +88,165 @@
   border-color: var(--color-paper);
 }
 
-/* Tablet: hide the inline nav links, keep logo + CTA.
-   (A full mobile menu can be added in a later step.) */
+/* ---- Hamburger toggle (hidden on desktop) -------------------------- */
+.nav__toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  color: var(--text-on-dark);
+}
+
+.nav__burger {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 14px;
+}
+
+.nav__burger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transition:
+    transform var(--dur) var(--ease-out),
+    opacity var(--dur) var(--ease-out),
+    top var(--dur) var(--ease-out);
+}
+
+.nav__burger span:first-child {
+  top: 0;
+}
+
+.nav__burger span:last-child {
+  top: 12px;
+}
+
+.nav__burger.is-open span:first-child {
+  top: 6px;
+  transform: rotate(45deg);
+}
+
+.nav__burger.is-open span:last-child {
+  top: 6px;
+  transform: rotate(-45deg);
+}
+
+/* ---- Mobile drawer + overlay --------------------------------------- */
+.nav__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(10, 10, 10, 0.5);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.nav__overlay.is-open {
+  opacity: 1;
+}
+
+.nav__drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 101;
+  width: min(82vw, 360px);
+  height: 100dvh;
+  padding: calc(var(--nav-height) + 1.5rem) clamp(1.5rem, 6vw, 2.5rem) 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: var(--color-ink);
+  color: var(--text-on-dark);
+  border-left: 1px solid var(--hairline-on-dark);
+  transform: translateX(100%);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.nav__drawer.is-open {
+  transform: translateX(0);
+}
+
+.nav__drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__drawer-links a {
+  display: block;
+  padding: 0.75rem 0;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid var(--hairline-on-dark);
+  transition: color var(--dur) var(--ease-out);
+}
+
+.nav__drawer-links a:hover,
+.nav__drawer-links a:focus-visible {
+  color: var(--color-beige);
+}
+
+.nav__drawer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 1rem 2rem;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  transition:
+    background var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+.nav__drawer-cta:hover,
+.nav__drawer-cta:focus-visible {
+  background: var(--color-beige);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__overlay,
+  .nav__drawer,
+  .nav__burger span {
+    transition: none;
+  }
+}
+
+/* Tablet: hide the inline nav links + CTA, show the hamburger menu. */
 @media (max-width: 860px) {
-  .nav__links {
+  .nav__links,
+  .nav__cta {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: inline-flex;
+  }
+}
+
+/* Desktop: ensure drawer/overlay never linger if resized open. */
+@media (min-width: 861px) {
+  .nav__overlay,
+  .nav__drawer {
     display: none;
   }
 }
