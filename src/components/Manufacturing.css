@@ -134,6 +134,16 @@
   background: radial-gradient(circle, rgba(30, 58, 95, 0.12), transparent 70%);
 }
 
+/* Factory photograph fills the slot without distortion */
+.facility__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .facility__list {
   margin: 0;
   padding: 0;

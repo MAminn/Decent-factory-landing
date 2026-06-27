@@ -66,13 +66,20 @@ export default function Manufacturing() {
                 under one roof.
               </p>
 
-              {/* c) Image slot — factory photography drops in here later */}
+              {/* c) Image slot — approved factory photography */}
               <div
                 className='facility__media'
-                role='img'
-                aria-label='Decent factory floor — photography to follow'
-                data-image-slot='manufacturing-facility'
-              />
+                data-image-slot='manufacturing-facility'>
+                <img
+                  className='facility__img'
+                  src='/facility-factory-floor.png'
+                  alt="Interior of Decent's garment factory floor, with rows of industrial sewing stations receding toward tall daylit windows"
+                  width={1448}
+                  height={1086}
+                  loading='lazy'
+                  decoding='async'
+                />
+              </div>
             </div>
 
             <ol className='facility__list'>
