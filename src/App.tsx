@@ -5,6 +5,10 @@ import Journey from "./components/Journey";
 import Products from "./components/Products";
 import Manufacturing from "./components/Manufacturing";
 import Capacity from "./components/Capacity";
+import Values from "./components/Values";
+import Why from "./components/Why";
+import Clients from "./components/Clients";
+import Future from "./components/Future";
 import Section from "./components/Section";
 import Footer from "./components/Footer";
 
@@ -13,38 +17,6 @@ import Footer from "./components/Footer";
  * These are intentionally placeholder shells; content is built in later steps.
  */
 const SECTIONS = [
-  {
-    id: "values",
-    index: "06",
-    eyebrow: "Values",
-    title: "What we stand for",
-    placeholder: "Commitment, Quality, and Flexibility will live here.",
-    tone: "warm" as const,
-  },
-  {
-    id: "why",
-    index: "07",
-    eyebrow: "Why Decent",
-    title: "Reasons to partner with us",
-    placeholder: "The differentiators list will live here.",
-    tone: "light" as const,
-  },
-  {
-    id: "clients",
-    index: "08",
-    eyebrow: "Clients & Partners",
-    title: "Trusted by leading names",
-    placeholder: "Client and fabric-partner logos will live here.",
-    tone: "warm" as const,
-  },
-  {
-    id: "future",
-    index: "09",
-    eyebrow: "The Future",
-    title: "Where we are headed",
-    placeholder: "Scaling, exports, and new product lines will live here.",
-    tone: "light" as const,
-  },
   {
     id: "contact",
     index: "10",
@@ -69,6 +41,10 @@ export default function App() {
         <Products />
         <Manufacturing />
         <Capacity />
+        <Values />
+        <Why />
+        <Clients />
+        <Future />
         {SECTIONS.map((section) => (
           <Section
             key={section.id}

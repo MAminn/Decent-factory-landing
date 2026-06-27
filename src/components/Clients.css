@@ -1,0 +1,93 @@
+/* ---- a) Client logo grid (text lockups) ---------------------------- */
+.clients__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: clamp(3rem, 7vw, 5rem) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hairline);
+  border-left: 1px solid var(--hairline);
+}
+
+.clients__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(6rem, 12vw, 8.5rem);
+  padding: 1.5rem;
+  text-align: center;
+  border-right: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  transition: background var(--dur) var(--ease-out);
+}
+
+.clients__cell:hover {
+  background: rgba(194, 169, 138, 0.1);
+}
+
+.clients__name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-ink);
+}
+
+/* ---- b) Partners --------------------------------------------------- */
+.clients__partners {
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+
+.clients__subhead {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold-accent);
+  padding-bottom: 1.5rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.partners__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.partners__cell {
+  display: flex;
+  align-items: center;
+}
+
+.partners__name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  font-weight: 500;
+  color: var(--color-denim-deep);
+}
+
+.clients__support {
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 52ch;
+}
+
+/* ---- Responsive ---------------------------------------------------- */
+@media (max-width: 720px) {
+  .clients__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 380px) {
+  .clients__grid {
+    grid-template-columns: 1fr;
+  }
+}
