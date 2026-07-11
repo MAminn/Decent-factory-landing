@@ -16,11 +16,13 @@ export default function Footer() {
         <div className='footer__col'>
           <h3 className='footer__heading'>Contact</h3>
           <ul>
-            <li>
-              <a href={`tel:${contact.phone.replace(/\s+/g, "")}`}>
-                {contact.phone}
-              </a>
-            </li>
+            {contact.phones.map((phone) => (
+              <li key={phone.number}>
+                <a href={`tel:${phone.number.replace(/\s+/g, "")}`}>
+                  {phone.label}: {phone.number}
+                </a>
+              </li>
+            ))}
             {contact.emails.map((email) => (
               <li key={email}>
                 <a href={`mailto:${email}`}>{email}</a>

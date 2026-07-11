@@ -2,7 +2,7 @@ import { company, contact } from "../data/decent";
 import "./Contact.css";
 
 export default function Contact() {
-  const telHref = `tel:${contact.phone.replace(/\s+/g, "")}`;
+  const primaryTelHref = `tel:${contact.phones[0].number.replace(/\s+/g, "")}`;
 
   return (
     <section
@@ -22,7 +22,7 @@ export default function Contact() {
             <h2 className='contact__statement' id='contact-title'>
               Let&rsquo;s build something that lasts.
             </h2>
-            <a className='btn btn--primary contact__cta' href={telHref}>
+            <a className='btn btn--primary contact__cta' href={primaryTelHref}>
               Start a Project
               <span aria-hidden='true'>→</span>
             </a>
@@ -33,11 +33,15 @@ export default function Contact() {
             <div className='contact__group'>
               <h3 className='contact__label'>Phone</h3>
               <ul>
-                <li>
-                  <a className='contact__link' href={telHref}>
-                    {contact.phone}
-                  </a>
-                </li>
+                {contact.phones.map((phone) => (
+                  <li key={phone.number}>
+                    <a
+                      className='contact__link'
+                      href={`tel:${phone.number.replace(/\s+/g, "")}`}>
+                      {phone.label}: {phone.number}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 

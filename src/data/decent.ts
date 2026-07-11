@@ -38,8 +38,13 @@ export interface FutureItem {
   body: string;
 }
 
+export interface ContactPhone {
+  label: string;
+  number: string;
+}
+
 export interface Contact {
-  phone: string;
+  phones: ContactPhone[];
   emails: string[];
   locations: string[];
   website: string;
@@ -83,11 +88,20 @@ export const process: readonly string[] = [
 ];
 
 export const facility: readonly FacilityFloor[] = [
-  { floor: "Ground Floor", use: "2 gabardine/slit-pocket lines" },
-  { floor: "2nd Floor", use: "2 denim/five-pocket lines" },
-  { floor: "3rd Floor", use: "Packaging & finishing" },
+  {
+    floor: "Ground Floor",
+    use: "Two production lines dedicated to gabardine trousers and slit-pocket bottoms",
+  },
+  {
+    floor: "2nd Floor",
+    use: "Two production lines dedicated to denim and five-pocket jeans",
+  },
+  { floor: "3rd Floor", use: "Finishing, quality inspection & packaging" },
   { floor: "4th Floor", use: "Training Academy & warehousing" },
-  { floor: "Separate annex", use: "Cutting facility" },
+  {
+    floor: "Annex building",
+    use: "Dedicated cutting facility with fabric spreading and cutting operations",
+  },
 ];
 
 export const capacity: Capacity = {
@@ -156,8 +170,15 @@ export const future: readonly FutureItem[] = [
 ];
 
 export const contact: Contact = {
-  phone: "+20 102 244 9556",
-  emails: ["osama@decenteg.com", "amr.bassiuny@decenteg.com"],
+  phones: [
+    { label: "Amr Bassiuny", number: "+20 122 108 2520" },
+    { label: "Merchandising", number: "+20 108 086 7231" },
+  ],
+  emails: [
+    "osama.maher@decenteg.com",
+    "amr.bassiuny@decenteg.com",
+    "merchandising@decenteg.com",
+  ],
   locations: [
     "Belbes, Sharqiyah, Egypt",
     "New factory: Obour, Qalyubiyah, Egypt",
