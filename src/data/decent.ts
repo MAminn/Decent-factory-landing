@@ -44,6 +44,23 @@ export interface FutureItem {
   body: string;
 }
 
+export interface Leader {
+  name: string;
+  role: string;
+  image?: string;
+}
+
+export interface Leadership {
+  ceo: {
+    name: string;
+    role: string;
+    quote: string;
+    message: string;
+    image: string;
+  };
+  team: readonly Leader[];
+}
+
 export interface ContactPhone {
   label: string;
   number: string;
@@ -185,6 +202,29 @@ export const future: readonly FutureItem[] = [
     body: "Expanding beyond core bottom-wear into cotton-based product lines while maintaining the same standard of excellence.",
   },
 ];
+
+export const leadership: Leadership = {
+  ceo: {
+    name: "Osama Maher",
+    role: "Chief Executive Officer",
+    quote:
+      "Great denim is never an accident; it is the result of passion, precision, and an uncompromising commitment to quality.",
+    message:
+      "Every pair we produce reflects our dedication to quality, consistency, and attention to detail — and our belief that lasting partnerships are built on trust, reliability, and shared success.",
+    image: "/leader-ceo.png",
+  },
+  team: [
+    { name: "Mossad", role: "Head of Finance", image: "/leader-mossad.png" },
+    { name: "Karim", role: "Head of Quality", image: "/leader-karim.png" },
+    { name: "Hesham", role: "Head of Operations", image: "/leader-hesham.png" },
+    {
+      name: "Amr Bassiuny",
+      role: "Head of Investment",
+      image: "/leader-amr-bassiuny.png",
+    },
+    { name: "Bakr", role: "Head of People", image: "/leader-bakr.png" },
+  ],
+};
 
 export const contact: Contact = {
   phones: [

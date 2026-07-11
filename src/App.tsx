@@ -9,6 +9,7 @@ import Values from "./components/Values";
 import Why from "./components/Why";
 import Clients from "./components/Clients";
 import Future from "./components/Future";
+import Leadership from "./components/Leadership";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -30,6 +31,7 @@ export default function App() {
         <Why />
         <Clients />
         <Future />
+        <Leadership />
         <Contact />
       </main>
       <Footer />

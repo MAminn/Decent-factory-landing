@@ -12,7 +12,7 @@ export default function Contact() {
       <div className='container'>
         <header className='section__head'>
           <span className='section__index' aria-hidden='true'>
-            10
+            11
           </span>
           <p className='eyebrow'>Contact</p>
         </header>

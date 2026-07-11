@@ -1,0 +1,200 @@
+/* ── CEO feature ─────────────────────────────────────────── */
+.ceo {
+  margin: clamp(3rem, 7vw, 5rem) 0 0;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.ceo__portrait {
+  margin: 0;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: linear-gradient(160deg, var(--surface-warm) 0%, #ece3d6 100%);
+}
+
+.ceo__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+.ceo__body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.ceo__quote {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.28;
+  color: var(--color-ink);
+  max-width: 24ch;
+}
+
+.ceo__message {
+  margin: 0;
+  font-size: clamp(1.02rem, 1.7vw, 1.15rem);
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 52ch;
+}
+
+.ceo__attribution {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.ceo__name {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.ceo__role {
+  font-size: var(--fs-small);
+  letter-spacing: 0.04em;
+  color: var(--color-gold-accent);
+  text-transform: uppercase;
+}
+
+/* ── Team grid ───────────────────────────────────────────── */
+.team {
+  margin: clamp(3rem, 7vw, 5rem) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+.team__card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.team__media {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: linear-gradient(160deg, var(--surface-warm) 0%, #ece3d6 100%);
+  transition:
+    transform var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out);
+}
+
+.team__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+/* Monogram fallback — no person imagery */
+.team__media--monogram {
+  display: grid;
+  place-items: center;
+}
+
+.team__monogram {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-gold-accent);
+}
+
+.team__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.team__name {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
+.team__role {
+  font-size: var(--fs-small);
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+
+/* Hover lift — desktop only */
+@media (min-width: 861px) {
+  .team__card:hover .team__media {
+    transform: translateY(-4px);
+    border-color: var(--color-gold-accent);
+  }
+}
+
+/* ── Tablet ──────────────────────────────────────────────── */
+@media (max-width: 1080px) {
+  .team {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Mobile: CEO stacks, team becomes a horizontal snap strip ── */
+@media (max-width: 860px) {
+  .ceo {
+    grid-template-columns: 1fr;
+    gap: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .team {
+    display: flex;
+    grid-template-columns: none;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
+  }
+
+  .team::-webkit-scrollbar {
+    display: none;
+  }
+
+  .team__card {
+    flex: 0 0 72vw;
+    scroll-snap-align: start;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .team__media {
+    transition: none;
+  }
+
+  .team__card:hover .team__media {
+    transform: none;
+  }
+
+  .team {
+    scroll-behavior: auto;
+  }
+}
