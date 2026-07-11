@@ -1,35 +1,34 @@
-import { products } from "../data/decent";
+import { productLines } from "../data/decent";
 import "./Products.css";
 
 /**
- * Approved garment photography, mapped by product name (matches products[] order).
- * Files live in /public; all six sources are 1122×1402 (exact 4:5).
+ * Approved garment photography, reused per production line.
+ * All sources live in /public and are 1122×1402 (exact 4:5).
+ * Alt text describes the garment, never the line name.
  */
-const PRODUCT_MEDIA: Record<string, { src: string; alt: string }> = {
-  "Pants & Trousers": {
-    src: "/product-pants-trousers.png",
-    alt: "Folded mid-grey tailored trousers",
-  },
-  "Jeans & Denim": {
-    src: "/product-jeans-denim.png",
-    alt: "Folded dark indigo five-pocket jeans",
-  },
-  Shorts: {
-    src: "/product-shorts.png",
-    alt: "Folded taupe chino shorts",
-  },
-  Chinos: {
-    src: "/product-chinos.png",
-    alt: "Folded khaki chino trousers",
-  },
-  "Casual & Formal Bottoms": {
-    src: "/product-casual-formal.png",
-    alt: "Charcoal formal and beige casual trousers laid side by side",
-  },
-  "All other bottom-wear categories": {
-    src: "/product-all-bottomwear.png",
-    alt: "An assortment of folded bottom-wear in beige, indigo and taupe",
-  },
+const LINE_MEDIA: Record<string, { src: string; alt: string }[]> = {
+  "Gabardine & Slit-Pocket Line": [
+    { src: "/product-chinos.png", alt: "Folded khaki chino trousers" },
+    {
+      src: "/product-pants-trousers.png",
+      alt: "Folded mid-grey tailored trousers",
+    },
+    {
+      src: "/product-casual-formal.png",
+      alt: "Charcoal formal and beige casual trousers laid side by side",
+    },
+    { src: "/product-shorts.png", alt: "Folded taupe chino shorts" },
+  ],
+  "Denim & Five-Pocket Line": [
+    {
+      src: "/product-jeans-denim.png",
+      alt: "Folded dark indigo five-pocket jeans",
+    },
+    {
+      src: "/product-all-bottomwear.png",
+      alt: "An assortment of folded bottom-wear in beige, indigo and taupe",
+    },
+  ],
 };
 
 export default function Products() {
@@ -48,42 +47,56 @@ export default function Products() {
             Bottom-wear, perfected
           </h2>
           <p className='products__intro'>
-            A focused specialism across every category of bottom-wear —
-            engineered for fit, finish, and longevity.
+            A focused bottom-wear specialism, produced across two dedicated
+            production lines — engineered for fit, finish, and longevity.
           </p>
         </header>
 
-        <ul className='products__grid'>
-          {products.map((product, i) => {
-            const media = PRODUCT_MEDIA[product];
+        <div className='products__lines'>
+          {productLines.map((line, i) => {
+            const media = LINE_MEDIA[line.name] ?? [];
             return (
-              <li key={product} className='product'>
-                <figure className='product__figure'>
-                  <div className='product__media' data-image-slot={product}>
-                    <img
-                      className='product__img'
-                      src={media.src}
-                      alt={media.alt}
-                      width={1122}
-                      height={1402}
-                      loading='lazy'
-                      decoding='async'
-                    />
-                    <span className='product__index' aria-hidden='true'>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <figcaption className='product__caption'>
-                    <span className='product__name'>{product}</span>
-                    <span className='product__arrow' aria-hidden='true'>
-                      →
-                    </span>
-                  </figcaption>
-                </figure>
-              </li>
+              <article
+                key={line.name}
+                className='line'
+                aria-labelledby={`line-${i}-title`}>
+                <div className='line__head'>
+                  <span className='line__index' aria-hidden='true'>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className='line__name' id={`line-${i}-title`}>
+                    {line.name}
+                  </h3>
+                  <p className='line__description'>{line.description}</p>
+                </div>
+
+                <ul className='line__categories'>
+                  {line.categories.map((category) => (
+                    <li className='line__category' key={category}>
+                      {category}
+                    </li>
+                  ))}
+                </ul>
+
+                <ul className='line__media'>
+                  {media.map((item) => (
+                    <li className='line__media-item' key={item.src}>
+                      <img
+                        className='line__img'
+                        src={item.src}
+                        alt={item.alt}
+                        width={1122}
+                        height={1402}
+                        loading='lazy'
+                        decoding='async'
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </article>
             );
           })}
-        </ul>
+        </div>
       </div>
     </section>
   );

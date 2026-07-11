@@ -22,6 +22,12 @@ export interface FacilityFloor {
   use: string;
 }
 
+export interface ProductLine {
+  name: string;
+  description: string;
+  categories: readonly string[];
+}
+
 export interface Capacity {
   current: string;
   team: string;
@@ -69,13 +75,24 @@ export const journey: readonly JourneyMilestone[] = [
   { year: 2025, label: "Built annex building" },
 ];
 
-export const products: readonly string[] = [
-  "Pants & Trousers",
-  "Jeans & Denim",
-  "Shorts",
-  "Chinos",
-  "Casual & Formal Bottoms",
-  "All other bottom-wear categories",
+export const productLines: readonly ProductLine[] = [
+  {
+    name: "Gabardine & Slit-Pocket Line",
+    description:
+      "Chinos, dress trousers, and casual bottoms, produced on two dedicated ground-floor lines.",
+    categories: [
+      "Chinos",
+      "Dress Trousers",
+      "Casual Trousers",
+      "Tailored Bottom-wear",
+    ],
+  },
+  {
+    name: "Denim & Five-Pocket Line",
+    description:
+      "Jeans with heavy-duty stitching and riveting, produced on two dedicated second-floor lines.",
+    categories: ["Jeans", "Five-Pocket Jeans", "Denim Shorts"],
+  },
 ];
 
 export const process: readonly string[] = [
