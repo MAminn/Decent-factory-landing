@@ -55,44 +55,53 @@ export default function Products() {
         <div className='products__lines'>
           {productLines.map((line, i) => {
             const media = LINE_MEDIA[line.name] ?? [];
+            const stripLabel = `${line.name.split(" ")[0]} line garment photos`;
             return (
               <article
                 key={line.name}
-                className='line'
+                className={`line${i % 2 === 1 ? " line--mirror" : ""}`}
                 aria-labelledby={`line-${i}-title`}>
-                <div className='line__head'>
-                  <span className='line__index' aria-hidden='true'>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className='line__name' id={`line-${i}-title`}>
-                    {line.name}
-                  </h3>
-                  <p className='line__description'>{line.description}</p>
+                <div className='line__inner'>
+                  <div className='line__text'>
+                    <div className='line__head'>
+                      <span className='line__index' aria-hidden='true'>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className='line__name' id={`line-${i}-title`}>
+                        {line.name}
+                      </h3>
+                    </div>
+                    <p className='line__description'>{line.description}</p>
+
+                    <ul className='line__categories'>
+                      {line.categories.map((category) => (
+                        <li className='line__category' key={category}>
+                          {category}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <ul
+                    className='line__media'
+                    role='region'
+                    aria-label={stripLabel}
+                    tabIndex={0}>
+                    {media.map((item) => (
+                      <li className='line__media-item' key={item.src}>
+                        <img
+                          className='line__img'
+                          src={item.src}
+                          alt={item.alt}
+                          width={1122}
+                          height={1402}
+                          loading='lazy'
+                          decoding='async'
+                        />
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <ul className='line__categories'>
-                  {line.categories.map((category) => (
-                    <li className='line__category' key={category}>
-                      {category}
-                    </li>
-                  ))}
-                </ul>
-
-                <ul className='line__media'>
-                  {media.map((item) => (
-                    <li className='line__media-item' key={item.src}>
-                      <img
-                        className='line__img'
-                        src={item.src}
-                        alt={item.alt}
-                        width={1122}
-                        height={1402}
-                        loading='lazy'
-                        decoding='async'
-                      />
-                    </li>
-                  ))}
-                </ul>
               </article>
             );
           })}

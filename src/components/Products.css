@@ -10,21 +10,35 @@
   margin: clamp(3rem, 7vw, 5rem) 0 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(3rem, 7vw, 5.5rem);
+  gap: clamp(3.5rem, 8vw, 6.5rem);
 }
 
-/* ── Line block ─────────────────────────────────────────── */
+/* ── Line block: two-column editorial composition ───────── */
 .line {
   border-top: 1px solid var(--hairline);
-  padding-top: clamp(1.75rem, 3.5vw, 2.75rem);
+  padding-top: clamp(2rem, 4vw, 3.25rem);
+}
+
+.line__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+/* Block 2 mirrored: images left, text right */
+.line--mirror .line__text {
+  order: 2;
+}
+
+.line--mirror .line__media {
+  order: 1;
 }
 
 .line__head {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: clamp(1.5rem, 5vw, 4rem);
-  row-gap: 0.75rem;
+  display: flex;
   align-items: baseline;
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .line__index {
@@ -44,46 +58,39 @@
 }
 
 .line__description {
-  grid-column: 2;
-  margin: 0;
+  margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
   font-size: clamp(1.05rem, 1.8vw, 1.2rem);
   line-height: 1.7;
   color: var(--text-muted);
-  max-width: 48ch;
+  max-width: 42ch;
 }
 
-/* ── Categories: hairline-divided list (Why/Values idiom) ── */
+/* ── Categories: compact serif labels (facility-label weight) ── */
 .line__categories {
-  grid-column: 1 / -1;
-  margin: clamp(1.75rem, 3.5vw, 2.5rem) 0 0;
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
   padding: 0;
   list-style: none;
   border-top: 1px solid var(--hairline);
 }
 
 .line__category {
-  padding: clamp(0.9rem, 2vw, 1.35rem) 0;
+  padding: 0.6rem 0;
   border-bottom: 1px solid var(--hairline);
   font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 2.4vw, 1.6rem);
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.35;
   color: var(--color-ink);
-  transition: padding-left var(--dur) var(--ease-out);
 }
 
-.line__category:hover {
-  padding-left: 0.75rem;
-}
-
-/* ── Image row: 3 → 2 → 1 ──────────────────────────────── */
+/* ── Image mosaic: 2 columns, no orphan cells (4→2×2, 2→1×2) ── */
 .line__media {
-  margin: clamp(1.75rem, 3.5vw, 2.75rem) 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1rem, 2.5vw, 1.75rem);
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .line__media-item {
@@ -97,11 +104,6 @@
     border-color var(--dur) var(--ease-out);
 }
 
-.line__media-item:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-gold-accent);
-}
-
 .line__img {
   position: absolute;
   inset: 0;
@@ -110,40 +112,60 @@
   object-fit: cover;
 }
 
-@media (max-width: 820px) {
-  .line__media {
-    grid-template-columns: repeat(2, 1fr);
+/* Hover lift — desktop only */
+@media (min-width: 861px) {
+  .line__media-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-gold-accent);
   }
 }
 
-@media (max-width: 560px) {
-  .line__head {
+/* ── Mobile: text stacks, images become a horizontal swipe strip ── */
+@media (max-width: 860px) {
+  .line__inner {
     grid-template-columns: 1fr;
-    row-gap: 0.5rem;
+    gap: clamp(1.75rem, 5vw, 2.5rem);
   }
 
-  .line__description {
-    grid-column: 1;
+  .line--mirror .line__text,
+  .line--mirror .line__media {
+    order: 0;
   }
-}
 
-@media (max-width: 520px) {
   .line__media {
-    grid-template-columns: 1fr;
+    display: flex;
+    grid-template-columns: none;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    /* hide scrollbar, keep keyboard/touch scrolling */
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
+  }
+
+  .line__media::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line__media-item {
+    flex: 0 0 72vw;
+    scroll-snap-align: start;
   }
 }
 
+/* ── Reduced motion ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .line__category,
   .line__media-item {
     transition: none;
   }
 
-  .line__category:hover {
-    padding-left: 0;
-  }
-
   .line__media-item:hover {
     transform: none;
+  }
+
+  .line__media {
+    scroll-behavior: auto;
   }
 }
