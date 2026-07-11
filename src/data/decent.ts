@@ -8,7 +8,6 @@ export interface Company {
   name: string;
   established: number;
   tagline: string;
-  positioning: string;
   website: string;
 }
 
@@ -77,9 +76,15 @@ export const company: Company = {
   name: "Decent",
   established: 2017,
   tagline: "Crafted with commitment. Built to last.",
-  positioning: "second-best factory in the local market, closing the gap",
   website: "decenteg.com",
 };
+
+export const missionVision = {
+  mission:
+    "To deliver exceptional bottom-wear manufacturing through precision, quality control, and an unwavering attention to detail. We don't just make garments, we build partnerships rooted in trust, flexibility, and a shared commitment to excellence.",
+  vision:
+    "To be a globally recognized garment manufacturer, expanding our presence in international markets while preserving the exceptional quality, craftsmanship, and integrity that define who we are.",
+} as const;
 
 export const founders: readonly string[] = ["Osama Maher", "Khalil Elsayed"];
 
@@ -214,26 +219,38 @@ export const leadership: Leadership = {
     image: "/leader-ceo.png",
   },
   team: [
-    { name: "Mossad", role: "Head of Finance", image: "/leader-mossad.png" },
-    { name: "Karim", role: "Head of Quality", image: "/leader-karim.png" },
-    { name: "Hesham", role: "Head of Operations", image: "/leader-hesham.png" },
     {
-      name: "Amr Bassiuny",
+      name: "Mossad Eissa",
+      role: "Head of Finance",
+      image: "/leader-mossad.png",
+    },
+    {
+      name: "Karim Bendary",
+      role: "Head of Quality",
+      image: "/leader-karim.png",
+    },
+    {
+      name: "Hesham Morshedy",
+      role: "Head of Operations",
+      image: "/leader-hesham.png",
+    },
+    {
+      name: "Amr Bassuni",
       role: "Head of Investment",
       image: "/leader-amr-bassiuny.png",
     },
-    { name: "Bakr", role: "Head of People", image: "/leader-bakr.png" },
+    { name: "Ahmed Bakr", role: "Head of People", image: "/leader-bakr.png" },
   ],
 };
 
 export const contact: Contact = {
   phones: [
-    { label: "Amr Bassiuny", number: "+20 122 108 2520" },
+    { label: "Amr Bassuni", number: "+20 122 108 2520" },
     { label: "Merchandising", number: "+20 108 086 7231" },
   ],
   emails: [
     "osama.maher@decenteg.com",
-    "amr.bassiuny@decenteg.com",
+    "Amr.Bassuni@decenteg.com",
     "merchandising@decenteg.com",
   ],
   locations: [

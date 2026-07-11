@@ -92,6 +92,38 @@ export default function Manufacturing() {
             </ol>
           </div>
         </div>
+
+        {/* c) Training Academy */}
+        <div className='mfg__block academy' aria-labelledby='mfg-academy-title'>
+          <h3 className='mfg__subhead' id='mfg-academy-title'>
+            Training Academy
+          </h3>
+
+          <div className='academy__grid'>
+            <div className='academy__intro'>
+              <p className='facility__lead'>Talent, trained in-house.</p>
+              <p className='academy__body'>
+                An in-house workforce development programme on the 4th floor —
+                upholding quality standards and building a reliable talent
+                pipeline.
+              </p>
+            </div>
+
+            <div
+              className='facility__media'
+              data-image-slot='manufacturing-academy'>
+              <img
+                className='facility__img'
+                src='/training-academy-exterior.png'
+                alt="Exterior of Decent's four-storey factory and annex buildings"
+                width={1672}
+                height={941}
+                loading='lazy'
+                decoding='async'
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

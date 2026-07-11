@@ -1,4 +1,4 @@
-import { company, founders } from "../data/decent";
+import { company, founders, missionVision } from "../data/decent";
 import "./About.css";
 
 export default function About() {
@@ -23,9 +23,10 @@ export default function About() {
 
           <div className='about__body'>
             <p>
-              We are a bottom-wear specialist with a clear ambition: to be the{" "}
-              {company.positioning}. Every line we run, every floor we build,
-              and every order we deliver is a step toward closing that&nbsp;gap.
+              We are a bottom-wear specialist with a clear ambition: to be a
+              globally recognized garment manufacturer, expanding into
+              international markets while preserving the quality, craftsmanship,
+              and integrity that define&nbsp;us.
             </p>
             <p className='about__tagline'>{company.tagline}</p>
 
@@ -38,6 +39,17 @@ export default function About() {
                 </span>
               ))}
             </p>
+          </div>
+        </div>
+
+        <div className='about__mv'>
+          <div className='about__mv-col'>
+            <p className='eyebrow about__mv-label'>Mission</p>
+            <p className='about__mv-text'>{missionVision.mission}</p>
+          </div>
+          <div className='about__mv-col'>
+            <p className='eyebrow about__mv-label'>Vision</p>
+            <p className='about__mv-text'>{missionVision.vision}</p>
           </div>
         </div>
 
