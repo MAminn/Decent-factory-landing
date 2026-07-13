@@ -49,7 +49,13 @@ export default function Nav() {
           className='nav__logo'
           href='#top'
           aria-label={`${company.name} — home`}>
-          DECENT
+          <img
+            src='/logo-decent-white.png'
+            alt='Decent'
+            className='nav__logo-img'
+            width={280}
+            height={56}
+          />
         </a>
 
         <nav className='nav__links' aria-label='Primary'>

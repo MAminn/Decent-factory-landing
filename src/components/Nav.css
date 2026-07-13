@@ -20,11 +20,14 @@
 }
 
 .nav__logo {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  padding-left: 0.22em; /* optical balance for tracking */
+  display: flex;
+  align-items: center;
+}
+
+.nav__logo-img {
+  height: 28px;
+  width: auto;
+  display: block;
 }
 
 .nav__links ul {
@@ -248,5 +251,11 @@
   .nav__overlay,
   .nav__drawer {
     display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav__logo-img {
+    height: 24px;
   }
 }

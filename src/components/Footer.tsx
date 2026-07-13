@@ -8,7 +8,13 @@ export default function Footer() {
     <footer className='footer'>
       <div className='container footer__inner'>
         <div className='footer__brand'>
-          <span className='footer__logo'>DECENT</span>
+          <img
+            src='/logo-decent-white.png'
+            alt='Decent'
+            className='footer__logo-img'
+            width={320}
+            height={64}
+          />
           <p className='footer__tagline'>{company.tagline}</p>
           <p className='footer__est'>Est. {company.established} · Egypt</p>
         </div>
